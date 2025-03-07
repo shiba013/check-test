@@ -15,7 +15,6 @@
     <header class="header">
         <div class="header__inner">
             <div class="header__title">
-                <h1></h1>
                 <h1 class="header__title-logo">Fashionably Late</h1>
                 <nav>
                     <ul class="header__nav">
@@ -41,19 +40,17 @@
 
             <div class="login__box">
                 <div class="login__box-item">
-                    <form action="/login" method="post" class="login-form">
+                    <form action="/admin" method="post" class="login-form">
                         @csrf
                         <div class="login-form__title">
                             <span class="login-form__title-span">メールアドレス</span>
-                        </div>
-                        <div class="login-form__item">
-                            <input type="email" name="email" value="{{ old('email') }}" class="login-form__item-input">
+                            <input type="email" name="email" value="例: test@example.com" class="login-form__title-input">
                         </div>
                         <div class="form__alert">
                             @if($errors->any())
                             <div class="form__alert--danger">
                                 <ul>
-                                    @foreach($errors->any() as $error)
+                                    @foreach($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                     @endforeach
                                 </ul>
@@ -63,15 +60,13 @@
 
                         <div class="login-form__title">
                             <span class="login-form__title-span">パスワード</span>
-                        </div>
-                        <div class="login-form__item">
-                            <input type="password" name="password" class="login-form__item-input">
+                            <input type="password" name="password" value="" class="login-form__title-input">
                         </div>
                         <div class="form__alert">
                             @if($errors->any())
                             <div class="form__alert--danger">
                                 <ul>
-                                    @foreach($errors->any() as $error)
+                                    @foreach($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                     @endforeach
                                 </ul>

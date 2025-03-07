@@ -15,7 +15,6 @@
     <header class="header">
         <div class="header__inner">
             <div class="header__title">
-                <h1></h1>
                 <h1 class="header__title-logo">Fashionably Late</h1>
                 <nav>
                     <ul class="header__nav">

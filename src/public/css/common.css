@@ -1,6 +1,6 @@
 .header {
     background-color: #fff;
-    border-bottom: 1px solid #E0DFDE;
+    border: 1px solid #E0DFDE;
 }
 
 .header__inner {
@@ -10,15 +10,17 @@
 }
 
 .header__title-logo {
+    font-family: "Inika", serif;
+    font-weight: 400;
     font-size: 40px;
     color: #8B7969;
 }
 
 .header__title {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-
+    position: relative;
 }
 
 .header__nav {
@@ -30,14 +32,19 @@
 }
 
 .nav__button {
+    font-family: "Inika", serif;
+    font-weight: 400;
     font-size: 20px;
     color: #D9C6B5;
     width: 100px;
     height: 34px;
     border: 1px solid #D9C6B5;
+    position: absolute;
+    right: 0;
 }
 
 body {
+    background-color: #f2ece8;
     font-family: "Inika", serif;
     font-weight: 400;
 }
