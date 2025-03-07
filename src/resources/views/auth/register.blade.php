@@ -19,7 +19,7 @@
                 <nav>
                     <ul class="header__nav">
                         <li class="header__nav-list">
-                            <form action="/login" method="post">
+                            <form action="/register" method="post">
                                 @csrf
                                 <button type="submit" class="nav__button">login</button>
                             </form>
@@ -44,7 +44,7 @@
                         @csrf
                         <div class="register-form__title">
                             <span class="register-form__title-span">お名前</span>
-                            <input type="text" name="name" value="例: 山田 太郎"class="register-form__title-input">
+                            <input type="text" name="name" placeholder="例: 山田 太郎"class="register-form__title-input">
                         </div>
                         <div class="form__alert">
                             @if($errors->any())
@@ -60,7 +60,7 @@
 
                         <div class="register-form__title">
                             <span class="register-form__title-span">メールアドレス</span>
-                            <input type="email" name="email" value="例: test@example.com" class="register-form__title-input">
+                            <input type="email" name="email" placeholder="例: test@example.com" class="register-form__title-input">
                         </div>
                         <div class="form__alert">
                             @if($errors->any())
@@ -76,7 +76,7 @@
 
                         <div class="register-form__title">
                             <span class="register-form__title-span">パスワード</span>
-                            <input type="password" name="password" value="" class="register-form__title-input">
+                            <input type="password" name="password" placeholder="例: coachtech1106" class="register-form__title-input">
                         </div>
                         <div class="form__alert">
                             @if($errors->any())

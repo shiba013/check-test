@@ -40,11 +40,11 @@
 
             <div class="login__box">
                 <div class="login__box-item">
-                    <form action="/admin" method="post" class="login-form">
+                    <form action="/login" method="post" class="login-form">
                         @csrf
                         <div class="login-form__title">
                             <span class="login-form__title-span">メールアドレス</span>
-                            <input type="email" name="email" value="例: test@example.com" class="login-form__title-input">
+                            <input type="email" name="email" placeholder="例: test@example.com" class="login-form__title-input">
                         </div>
                         <div class="form__alert">
                             @if($errors->any())
@@ -60,7 +60,7 @@
 
                         <div class="login-form__title">
                             <span class="login-form__title-span">パスワード</span>
-                            <input type="password" name="password" value="" class="login-form__title-input">
+                            <input type="password" name="password" placeholder="例: coachtech1106" class="login-form__title-input">
                         </div>
                         <div class="form__alert">
                             @if($errors->any())
