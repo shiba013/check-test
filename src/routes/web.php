@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/', [ContactController::class, 'contact']);
+
 Route::get('/thanks', [ContactController::class, 'thanks']);
 Route::get('/', [ContactController::class, 'home']);
+
+Route::get('/', [CategoryController::class, 'contact']);
