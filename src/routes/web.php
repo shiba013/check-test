@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
+Route::middleware('auth')->group(function () {
+    Route::get('/admin', [UserController::class, 'index']);
+});
 
-Route::get('/login', [UserController::class, 'index']);
+Route::get('/', [ContactController::class, 'contact']);
+Route::get('/thanks', [ContactController::class, 'thanks']);
+Route::get('/', [ContactController::class, 'home']);

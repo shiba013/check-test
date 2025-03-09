@@ -19,7 +19,7 @@
                 <nav>
                     <ul class="header__nav">
                         <li class="header__nav-list">
-                            <form action="/register" method="post">
+                            <form action="/register" method="get">
                                 @csrf
                                 <button type="submit" class="nav__button">register</button>
                             </form>
@@ -47,11 +47,11 @@
                             <input type="email" name="email" placeholder="例: test@example.com" class="login-form__title-input">
                         </div>
                         <div class="form__alert">
-                            @if($errors->any())
+                            @if($errors->has('email'))
                             <div class="form__alert--danger">
                                 <ul>
-                                    @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
+                                    @foreach($errors->get('email') as $message)
+                                    <li>{{ $message }}</li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -63,11 +63,11 @@
                             <input type="password" name="password" placeholder="例: coachtech1106" class="login-form__title-input">
                         </div>
                         <div class="form__alert">
-                            @if($errors->any())
+                            @if($errors->has('password'))
                             <div class="form__alert--danger">
                                 <ul>
-                                    @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
+                                    @foreach($errors->get('password') as $message)
+                                    <li>{{ $message }}</li>
                                     @endforeach
                                 </ul>
                             </div>

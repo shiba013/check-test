@@ -19,7 +19,7 @@
                 <nav>
                     <ul class="header__nav">
                         <li class="header__nav-list">
-                            <form action="/register" method="post">
+                            <form action="/login" method="get">
                                 @csrf
                                 <button type="submit" class="nav__button">login</button>
                             </form>
@@ -40,18 +40,18 @@
 
             <div class="register__box">
                 <div class="register__box-item">
-                    <form action="/login" method="post" class="register-form">
+                    <form action="/register" method="post" class="register-form">
                         @csrf
                         <div class="register-form__title">
                             <span class="register-form__title-span">お名前</span>
-                            <input type="text" name="name" placeholder="例: 山田 太郎"class="register-form__title-input">
+                            <input type="text" name="name" placeholder="例: 山田 太郎" class="register-form__title-input">
                         </div>
                         <div class="form__alert">
-                            @if($errors->any())
+                            @if($errors->has('name'))
                             <div class="form__alert--danger">
                                 <ul>
-                                    @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
+                                    @foreach($errors->get('name') as $message)
+                                    <li>{{ $message }}</li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -60,14 +60,14 @@
 
                         <div class="register-form__title">
                             <span class="register-form__title-span">メールアドレス</span>
-                            <input type="email" name="email" placeholder="例: test@example.com" class="register-form__title-input">
+                            <input type="text" name="email" placeholder="例: test@example.com" class="register-form__title-input">
                         </div>
                         <div class="form__alert">
-                            @if($errors->any())
+                            @if($errors->has('email'))
                             <div class="form__alert--danger">
                                 <ul>
-                                    @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
+                                    @foreach($errors->get('email') as $message)
+                                    <li>{{ $message }}</li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -79,11 +79,11 @@
                             <input type="password" name="password" placeholder="例: coachtech1106" class="register-form__title-input">
                         </div>
                         <div class="form__alert">
-                            @if($errors->any())
+                            @if($errors->has('password'))
                             <div class="form__alert--danger">
                                 <ul>
-                                    @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
+                                    @foreach($errors->get('password') as $message)
+                                    <li>{{ $message }}</li>
                                     @endforeach
                                 </ul>
                             </div>
