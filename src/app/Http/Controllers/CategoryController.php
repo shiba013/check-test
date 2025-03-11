@@ -13,7 +13,11 @@ class CategoryController extends Controller
         return view('contact', compact('categories'));
     }
 
-        public function confirm() {
-        //
+        public function confirm(CategoryRequest $request) {
+        $category = $request->only([
+            'content'
+        ]);
+        Category::create($category);
+        return view('confirm', compact('category'));
     }
 }

@@ -25,8 +25,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/', [ContactController::class, 'contact']);
-
-Route::get('/thanks', [ContactController::class, 'thanks']);
+Route::post('/confirm', [ContactController::class, 'confirm']);
+Route::post('/thanks', [ContactController::class, 'thanks']);
 Route::get('/', [ContactController::class, 'home']);
 
 Route::get('/', [CategoryController::class, 'contact']);
+Route::post('/confirm', [CategoryController::class, 'confirm']);
+Route::post('/thanks', [CategoryController::class, 'thanks']);

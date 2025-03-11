@@ -16,3 +16,44 @@ body {
     font-size: 35px;
     color: #8B7969;
 }
+
+.form {
+    margin: 0px auto;
+    width: 70%;
+    text-align: center;
+}
+
+.form__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.form__item-title {
+    width: 20%;
+}
+
+.form__item-content {
+    margin-left: 20px;
+    width: 50%;
+}
+
+p {
+    color: #8B7969;
+}
+
+span {
+    color: red;
+}
+
+.content__text {
+    text-align: left;
+    display: flex;
+}
+
+.content__text-input {
+    width: 100%;
+    background-color: #f4f4f4;
+    border: 1px solid #8B7969;
+    color: #BEB1A6;
+}
