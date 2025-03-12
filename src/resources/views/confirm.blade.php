@@ -7,7 +7,7 @@
 <div class="content">
     <div class="content__inner">
         <div class="content__title">
-            <h2 class="content__title-logo">contact</h2>
+            <h2 class="content__title-logo">confirm</h2>
         </div>
     </div>
 

@@ -34,7 +34,7 @@ body {
 }
 
 .confirm-table {
-    border: 1px solid #ddd;
+    border: 1px solid #E0DFDE;
 }
 
 .confirm-table__inner {
@@ -44,14 +44,14 @@ body {
 .confirm-table__header {
     padding: 15px;
     width: 20%;
-    border-bottom: 1px solid #ddd;
-    background-color: #eee;
-    font-weight: bold;
+    border-bottom: 1px solid #E0DFDE;
+    background-color: #BAA899;
 }
 
 .confirm-table__text {
     padding: 15px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #E0DFDE;
+    color: #fff;
 }
 
 .confirm-table__text input {
@@ -75,8 +75,7 @@ body {
     width: 30%;
     height: 50%;
     border: none;
-    border-radius: 3px;
-    background: #000;
+    background: #82756A;
     color: #fff;
     cursor: pointer;
 }
