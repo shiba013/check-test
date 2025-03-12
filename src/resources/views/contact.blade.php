@@ -45,9 +45,12 @@
                 </div>
                 <div class="form__item-content">
                     <div class="content__text">
-                        <input type="radio" name="gender" value="1" checked>男性&nbsp; &nbsp;
-                        <input type="radio" name="gender" value="2">女性&nbsp; &nbsp;
-                        <input type="radio" name="gender" value="3">その他
+                        <input type="radio" name="gender" value="1" class="radio" checked>
+                        <label for="radio">男性&nbsp; &nbsp;</label>
+                        <input type="radio" name="gender" value="2" class="radio">
+                        <label for="radio">女性&nbsp; &nbsp;</label>
+                        <input type="radio" name="gender" value="3" class="radio">
+                        <label for="radio">その他</label>
                     </div>
                     <div class="form__alert">
                         @error('gender')
@@ -83,9 +86,9 @@
                 </div>
                 <div class="form__item-content">
                     <div class="content__text">
-                        <input type="text" name="tel_1" placeholder="080" class="content__text-input"   value="{{ old('tel_1') }}">&nbsp;-&nbsp;
-                        <input type="text" name="tel_2" placeholder="1234" class="content__text-input" value="{{ old('tel_2') }}">&nbsp;-&nbsp;
-                        <input type="text" name="tel_3" placeholder="5678" class="content__text-input" value="{{ old('tel_3') }}">
+                        <input type="text" name="tel_1" placeholder="080" class="content__text-input--tel"   value="{{ old('tel_1') }}">&nbsp;-&nbsp;　
+                        <input type="text" name="tel_2" placeholder="1234" class="content__text-input--tel" value="{{ old('tel_2') }}">&nbsp;-&nbsp;　
+                        <input type="text" name="tel_3" placeholder="5678" class="content__text-input--tel" value="{{ old('tel_3') }}">
                     </div>
                     <div class="form__alert">
                         @error('tel')
@@ -137,11 +140,13 @@
                 </div>
                 <div class="form__item-content">
                     <div class="content__text">
-                        <select name="content" class="content__text-select">
-                            <option value="" selected>選択してください</option>
-                            @foreach($categories as $category)
-                            <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
-                            @endforeach
+                        <select name="category_id" class="content__text-input">
+                            <option value="">選択してください</option>
+                            <option value="1">商品のお届けについて</option>
+                            <option value="2">商品の交換について</option>
+                            <option value="3">商品トラブル</option>
+                            <option value="4">ショップへのお問い合わせ</option>
+                            <option value="5">その他</option>
                         </select>
                     </div>
                     <div class="form__alert">

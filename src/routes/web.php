@@ -23,12 +23,13 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [UserController::class, 'index']);
 });
+Route::get('/admin', [UserController::class, 'search']);
 
 Route::get('/', [ContactController::class, 'contact']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
-Route::post('/thanks', [ContactController::class, 'thanks']);
+Route::post('/thanks', [ContactController::class, 'store']);
 Route::get('/', [ContactController::class, 'home']);
 
 Route::get('/', [CategoryController::class, 'contact']);
 Route::post('/confirm', [CategoryController::class, 'confirm']);
-Route::post('/thanks', [CategoryController::class, 'thanks']);
+Route::post('/thanks', [CategoryController::class, 'store']);
