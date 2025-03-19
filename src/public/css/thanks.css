@@ -20,6 +20,7 @@ body {
     width: 100%;
     height: 50vh;
     text-align: center;
+    position: relative;
 }
 
 .thanks__title-logo {
@@ -27,16 +28,18 @@ body {
     height: 100%;
     color: rgb(139, 121, 105, 0.2);
     z-index: 1;
-    text-align: left;
-    position: relative;
-    font-size: 240px;
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    font-size: 280px;
 }
 
 .thanks__heading {
     z-index: 10;
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 55%;
     transform: translate(-50%, -50%);
     color: #8B7969;
 }
@@ -51,7 +54,11 @@ body {
     width: 100%;
     padding: 10px 40px;
     background-color: #82756A;
-    color: #fff;
     border: none;
     cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
 }

@@ -12,4 +12,9 @@ class Category extends Model
     protected $fillable = [
         'content'
     ];
+
+    public function contact()
+    {
+        return $this->hasOne(Category::class);
+    }
 }

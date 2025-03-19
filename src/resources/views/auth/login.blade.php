@@ -44,7 +44,7 @@
                         @csrf
                         <div class="login-form__title">
                             <span class="login-form__title-span">メールアドレス</span>
-                            <input type="email" name="email" placeholder="例: test@example.com" class="login-form__title-input">
+                            <input type="text" name="email" placeholder="例: test@example.com" class="login-form__title-input">
                         </div>
                         <div class="form__alert">
                             @if($errors->has('email'))

@@ -91,7 +91,17 @@
                         <input type="text" name="tel_3" placeholder="5678" class="content__text-input--tel" value="{{ old('tel_3') }}">
                     </div>
                     <div class="form__alert">
-                        @error('tel')
+                        @error('tel_1')
+                        {{ $message }}
+                        @enderror
+                    </div>
+                    <div class="form__alert">
+                        @error('tel_2')
+                        {{ $message }}
+                        @enderror
+                    </div>
+                    <div class="form__alert">
+                        @error('tel_3')
                         {{ $message }}
                         @enderror
                     </div>
@@ -142,15 +152,13 @@
                     <div class="content__text">
                         <select name="category_id" class="content__text-input">
                             <option value="">選択してください</option>
-                            <option value="1">商品のお届けについて</option>
-                            <option value="2">商品の交換について</option>
-                            <option value="3">商品トラブル</option>
-                            <option value="4">ショップへのお問い合わせ</option>
-                            <option value="5">その他</option>
+                            @foreach($categories as $category)
+                            <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form__alert">
-                        @error('content')
+                        @error('category_id')
                         {{ $message }}
                         @enderror
                     </div>

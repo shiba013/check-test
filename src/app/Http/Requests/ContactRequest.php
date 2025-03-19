@@ -28,11 +28,12 @@ class ContactRequest extends FormRequest
             'last_name' => 'required|string|max:255',
             'gender' => 'required',
             'email' => 'required|string|max:255|email',
-            'tel_1' => 'required|numeric|max:5|regex:/^[0-9]+$/',
-            'tel_2' => 'required|numeric|max:5|regex:/^[0-9]+$/',
-            'tel_3' => 'required|numeric|max:5|regex:/^[0-9]+$/',
+            'tel_1' => 'required|string|max:5|regex:/^[0-9]+$/',
+            'tel_2' => 'required|string|max:5|regex:/^[0-9]+$/',
+            'tel_3' => 'required|string|max:5|regex:/^[0-9]+$/',
             'address' => 'required|string|max:255',
-            'building' => 'string|max:255',
+            'building' => 'max:255',
+            'category_id' => 'required',
             'detail' => 'required|string|max:120',
         ];
     }
@@ -52,6 +53,7 @@ class ContactRequest extends FormRequest
             'tel_2.max' => '電話番号は5桁までの数字で入力してください',
             'tel_3.max' => '電話番号は5桁までの数字で入力してください',
             'address.required' => '住所を入力してください',
+            'category_id.required' => 'お問い合わせの種類を選択してください',
             'detail.required' => 'お問い合わせ内容を入力してください',
             'detail.max' => 'お問い合わせ内容は120文字以内で入力してください',
         ];

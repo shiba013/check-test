@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{{ asset('css/confirm.css') }}">
 @endsection
 
+@section('content')
 <div class="content">
     <div class="content__inner">
         <div class="content__title">
@@ -19,29 +20,22 @@
                     <tr class="confirm-table__row">
                         <th class="confirm-table__header">お名前</th>
                         <td class="confirm-table__text">
-                            <p>{{ $contact['first_name'] }}</p>
+                            <p>{{ $contact['first_name'] }}&nbsp; &nbsp;{{ $contact['last_name'] }}</p>
                             <input type="hidden" name="first_name" value="{{ $contact['first_name'] }}" />
-                            <p>{{ $contact['last_name'] }}</p>
-                            <input type="hidden" name="last_name" value="{{$contact['last_name']}}" />
+                            <input type="hidden" name="last_name" value="{{ $contact['last_name'] }}" />
                         </td>
                     </tr>
                     <tr class="confirm-table__row">
                         <th class="confirm-table__header">性別</th>
                         <td class="confirm-table__text">
                             <p>
-                                @php
-                                switch($contact['gender']) {
-                                    case "1":
-                                        echo "男性";
-                                        break;
-                                    case "2":
-                                        echo "女性";
-                                        break;
-                                    case "3":
-                                        echo "その他";
-                                        break;
-                                }
-                                @endphp
+                                @if($contact['gender'] == 1)
+                                男性
+                                @elseif($contact['gender'] == 2)
+                                女性
+                                @else
+                                その他
+                                @endif
                             </p>
                             <input type="hidden" name="gender" value="{{ $contact['gender'] }}" />
                         </td>
@@ -56,10 +50,10 @@
                     <tr class="confirm-table__row">
                         <th class="confirm-table__header">電話番号</th>
                         <td class="confirm-table__text">
-                            <p>{{ $contact['tell_1'] }}{{ $contact['tell_2'] }}{{ $contact['tell_3'] }}</p>
-                            <input type="hidden" name="tell_1" value="{{ $contact['tell_1'] }}" />
-                            <input type="hidden" name="tell_2" value="{{ $contact['tell_2'] }}" />
-                            <input type="hidden" name="tell_3" value="{{ $contact['tell_3'] }}"/>
+                            <p>{{ $contact['tel_1'] }}{{ $contact['tel_2'] }}{{ $contact['tel_3'] }}</p>
+                            <input type="hidden" name="tel_1" value="{{ $contact['tel_1'] }}" />
+                            <input type="hidden" name="tel_2" value="{{ $contact['tel_2'] }}" />
+                            <input type="hidden" name="tel_3" value="{{ $contact['tel_3'] }}"/>
                         </td>
                     </tr>
                     <tr class="confirm-table__row">
@@ -93,15 +87,11 @@
                 </table>
             </div>
             <div class="confirm-form__button">
-                <button class="confirm-form__button-submit" type="submit">送信</button>
-            </div>
-        </form>
-        <form action="/" method="post" class="edit-form">
-            <div class="edit-form__button">
-                <button class="edit-form__button-submit" type="submit">修正</button>
+                <input class="confirm-form__button-submit" type="submit" value="送信" name="send">
+                <input class="back-button" type="submit" value="修正" name="back">
             </div>
         </form>
     </div>
 </div>
 
-@section('content')
+@endsection

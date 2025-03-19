@@ -13,10 +13,10 @@
     </div>
 
 <div class="form">
-    <form action="" method="get" class="search-form">
+    <form action="/admin/search" method="get" class="search-form">
         @csrf
         <div class="search-form__item">
-            <input type="text" name="keyword" value="{{ old('keyword') }}" class="search-form__item-group" placeholder="名前やメールアドレスを入力してください">
+            <input type="text" name="keyword" value="{{ old('keyword') }}" class="search-form__item-group--key" placeholder="名前やメールアドレスを入力してください">
             <select name="gender" class="search-form__item-group">
                 <option value="" selected>性別</option>
                 <option value="1">男性</option>
@@ -24,78 +24,106 @@
                 <option value="3">その他</option>
             </select>
             <select name="category_id" class="search-form__item-group">
+                <option value="" selected hidden>選択してください</option>
                 @foreach($categories as $category)
-                <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+                <option value="{{ $category->id }}">{{ $category->content }}</option>
                 @endforeach
             </select>
-            <input type="date" name="data" class="search-form__item-group">
-            <div class="search-form__button">
-                <button type="submit" class="search-form__button-submit">検索</button>
-            </div>
-            <div class="search-form__reset-button">
-                <button type="reset" class="search-form__button-reset">リセット</button>
-            </div>
+            <input type="date" name="created_at" class="search-form__item-group--data">
+        </div>
+        <div class="search-form__button">
+            <button type="submit" class="search-form__button-submit">検索</button>
+            <button type="reset" class="search-form__button-reset">リセット</button>
         </div>
     </form>
 
     <div class="function">
         <button type="submit" class="function-button">エクスポート</button>
+        {{ $contacts->links('vendor.Pagination.bootstrap-4') }}
     </div>
 
     <div class="table">
         <table class="table__inner">
             <tr class="table__row">
-                <th class="table__header">
-                    <span class="table__header-span">お名前</span>
-                    <span class="table__header-span">性別</span>
-                    <span class="table__header-span">メールアドレス</span>
-                    <span class="table__header-span">お問い合わせの種類</span>
-                </th>
+                <th class="table__header">お名前</th>
+                <th class="table__header">性別</th>
+                <th class="table__header">メールアドレス</th>
+                <th class="table__header">お問い合わせの種類</th>
+                <th class="table__header"></th>
             </tr>
+            @foreach($contacts as $contact)
             <tr class="table__row">
+                <td class="table__item">{{ $contact->first_name }}&nbsp; &nbsp;{{ $contact->last_name }}</td>
                 <td class="table__item">
-                    <div class="table__item-data">
-                        a
-                    </div>
-                    <div class="modal">
-                        <button class="open-button" popovertarget="detail" popovertargetaction="show">詳細</button>
-                        <div id="detail" popover>
-                            <p>選択内容を表示したい...</p>
-                            <p>モーダルウインドウ外を押すと画面消える</p>
-                            <form action="" method="post" class="delete-form">
-                                @method('delete')
-                                @csrf
-                                <div class="delete-form__button">
-                                    <input type="hidden" name="id" value="">
-                                    <button type="submit" popovertarget="detail" popovertargetaction="hide" >削除</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    @if($contact->gender == 1)
+                    男性
+                    @elseif($contact->gender == 2)
+                    女性
+                    @else
+                    その他
+                    @endif
+                </td>
+                <td class="table__item">{{ $contact->email }}</td>
+                <td class="table__item">{{ $contact->category->content }}</td>
+                <td class="table__item">
+                    <a href="#{{ $contact->id }}" class="open-button">詳細</a>
                 </td>
             </tr>
-            <tr class="table__row">
-                <td class="table__item">
-                    <div class="table__item-data">
-                        b
+
+            <div class="modal" id="{{ $contact->id }}">
+                <a href="#!" class="popover"></a>
+                <div class="modal__inner">
+                    <div class="modal__content">
+                        <form action="/admin/delete" method="post" class="delete-form">
+                            @method('delete')
+                            @csrf
+                            <div class="delete-form__item">
+                                <label for="" class="delete-form__label">お名前</label>
+                                <p>{{ $contact->first_name }}{{ $contact->last_name }}</p>
+                            </div>
+                            <div class="delete-form__item">
+                                <label for="" class="delete-form__label">性別</label>
+                                <p>
+                                    @if($contact->gender == 1)
+                                    男性
+                                    @elseif($contact->gender == 2)
+                                    女性
+                                    @else
+                                    その他
+                                    @endif
+                                </p>
+                            </div>
+                            <div class="delete-form__item">
+                                <label for="" class="delete-form__label">メールアドレス</label>
+                                <p>{{ $contact->email }}</p>
+                            </div>
+                            <div class="delete-form__item">
+                                <label for="" class="delete-form__label">電話番号</label>
+                                <p>{{ $contact->tell }}</p>
+                            </div>
+                            <div class="delete-form__item">
+                                <label for="" class="delete-form__label">住所</label>
+                                <p>{{ $contact->address }}</p>
+                            </div>
+                            <div class="delete-form__item">
+                                <label for="" class="delete-form__label">建物名</label>
+                                <p>{{ $contact->building }}</p>
+                            </div>
+                            <div class="delete-form__item">
+                                <label for="" class="delete-form__label">お問い合わせの種類</label>
+                                <p>{{ $contact->category->content }}</p>
+                            </div>
+                            <div class="delete-form__item">
+                                <label for="" class="delete-form__label">お問い合わせ内容</label>
+                                <p>{{ $contact->detail }}</p>
+                            </div>
+                            <input type="hidden" name="id" value="{{ $contact->id }}">
+                            <input type="submit" value="削除" class="delete-form__button">
+                        </form>
                     </div>
-                    <div class="modal">
-                        <button class="open-button" popovertarget="detail" popovertargetaction="show">詳細</button>
-                        <div id="detail" popover>
-                            <p>選択内容を表示したい...</p>
-                            <p>モーダルウインドウ外を押すと画面消える</p>
-                            <form action="" method="post" class="delete-form">
-                                @method('delete')
-                                @csrf
-                                <div class="delete-form__button">
-                                    <input type="hidden" name="id" value="">
-                                    <button type="submit" popovertarget="detail" popovertargetaction="hide" >削除</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                    <a href="#" class="close">×</a>
+                </div>
+            @endforeach
         </table>
     </div>
 </div>

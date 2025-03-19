@@ -15,21 +15,18 @@ use App\Http\Controllers\CategoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function ()
+{
     Route::get('/admin', [UserController::class, 'index']);
 });
-Route::get('/admin', [UserController::class, 'search']);
+Route::get('/admin/search', [UserController::class, 'search']);
+Route::delete('/admin/delete', [UserController::class, 'destroy']);
 
-Route::get('/', [ContactController::class, 'contact']);
+Route::get('/', [ContactController::class, 'index']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
-Route::get('/', [ContactController::class, 'home']);
 
-Route::get('/', [CategoryController::class, 'contact']);
-Route::post('/confirm', [CategoryController::class, 'confirm']);
-Route::post('/thanks', [CategoryController::class, 'store']);
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::post('/categories/add', [CategoryController::class, 'add']);
+Route::patch('/categories/update', [CategoryController::class, 'update']);
+Route::delete('/categories/delete', [CategoryController::class, 'destroy']);

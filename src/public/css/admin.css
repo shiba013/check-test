@@ -17,23 +17,32 @@
 }
 
 .search-form {
-    margin: 0pc auto;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
 }
 
 .search-form__item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    width: 80%;
+    height: 50px;
+}
+
+.search-form__item-group--key {
+    width: 340px;
+    height: 100%;
+    background-color: #FBFBFB;
+    border: 1px solid rgba(227, 222, 217, 1);
     margin-right: 30px;
-    width: 100%;
-    height: 40px;
 }
 
 .search-form__item-group {
     width: fit-content;
     height: 100%;
     background-color: #FBFBFB;
-    border: 1px solid #E3DED9;
+    border: 1px solid rgba(227, 222, 217, 1);
+    margin-right: 30px;
 }
 
 ::placeholder {
@@ -43,40 +52,59 @@
 }
 
 select {
-    color: #8B7969;
+    width: 100px;
+    color: rgba(139, 121, 105, 1);
+    border: 1px solid rgba(227, 222, 217, 1)
+}
+
+.search-form__item-group--data {
+    width: 150px;
+    color: rgba(139, 121, 105, 1);
+    border: 1px solid rgba(227, 222, 217, 1);
+    height: 50px;
 }
 
 .search-form__button {
-    width: 100px;
+    width: 20%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .search-form__button-submit {
-    width: 100%;
-    height: 40px;
-    background-color: #82756A;
-    border: 1px solid #8B7969;
+    width: 100px;
+    background: rgba(130, 117, 106, 1);
+    border: 1px solid rgba(139, 121, 105, 1);
     color: #fff;
 }
 
 .search-form__reset-button {
     width: 100px;
+    background: rgba(217, 198, 181, 1);
+    border: 1px solid rgba(217, 198, 181, 1);
+    color: #fff;
+    height: 50px;
 }
 
 .search-form__button-reset {
-    width: 100%;
-    height: 40px;
+    width: 100px;
+    height: 50px;
     background-color: #D9C6B5;
     border: 1px solid #D9C6B5;
     color: #fff;
 }
 
 .function {
-    width: 140px;
-    padding: 8px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .function-button {
-    width: 100%;
+    width: 140px;
+    height: 40px;
+    margin: auto 0px;
+    padding: 8px 20px;
     color: #8B7969;
     background-color: #E1DBD699;
     border: none;
@@ -92,36 +120,21 @@ select {
     width: 100%;
 }
 
-.content__row {
+.table__row {
     border-bottom: 1px solid #E0DFDE;
 }
 
 .table__header {
-    width: 100%;
-    padding: 15px;
+    width: fit-content;
     background-color: #8B7969;
     color: #fff;
-    text-align: left;
-}
-
-.table__header-span {
-    margin-right: 120px;
+    text-align: center;
 }
 
 .table__item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.table__item-data {
     color: #8B7969;
-}
-
-.modal {
-    padding: 8px 20px;
-    width: 100px;
-
+    text-align: center;
+    padding: 10px;
 }
 
 .open-button {
@@ -130,4 +143,81 @@ select {
     background-color: #F4F4F44D;
     border: 1px solid #D9C6B599;
     color: #D9C6B5;
+}
+
+.modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.modal:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 70%;
+    height: 70%;
+}
+
+.modal__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 80%;
+    transform: translate(-50%, -50%);
+    box-shadow: 4px 4px 4px rgba(139, 121, 105, 0.25);
+    border: 1px solid #8B7969;
+    background-color: #fff;
+}
+
+.modal__content {
+    position: relative;
+    padding: 64px 64px;
+    color: rgba(139, 121, 105, 1);
+}
+
+.delete-form__item {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+}
+
+.delete-form__label {
+    font-weight: bold;
+    align-items: center;
+    margin: auto 0px;
+}
+
+.delete-form__button {
+    display: block;
+    margin: 64px auto;
+    padding: 8px 20px;
+    width: 70px;
+    background-color: #BA370D;
+    border: none;
+    color: #fff;
+}
+
+.close {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #8B7969;
+    border-radius: 50%;
+    color: #8B7969;
+    text-align: center;
+    text-decoration: none;
 }

@@ -18,9 +18,9 @@
             <div class="thanks__heading">
                 <h2>お問い合わせありがとうございました</h2>
                 <div class="thanks__button">
-                    <form action="/" method="get">
-                        <button type="submit" class="thanks__button-submit">HOME</button>
-                    </form>
+                    <button type="submit" class="thanks__button-submit">
+                        <a href="/">HOME</a>
+                    </button>
                 </div>
             </div>
         </div>
