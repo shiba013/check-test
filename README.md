@@ -23,7 +23,7 @@ Laravel環境構築
 ・nginx 1.21.1
 
 ## ER図
-![alt](er.png)
+<img width="993" alt="er" src="https://github.com/user-attachments/assets/2ad74ed3-7fa8-4b97-ba05-42e97d0229b7" />
 
 ## URL
 ・開発環境：http://localhost/
