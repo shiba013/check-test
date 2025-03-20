@@ -98,12 +98,12 @@ select {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .function-button {
     width: 140px;
     height: 40px;
-    margin: auto 0px;
     padding: 8px 20px;
     color: #8B7969;
     background-color: #E1DBD699;

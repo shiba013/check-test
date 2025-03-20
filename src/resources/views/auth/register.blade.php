@@ -47,15 +47,11 @@
                             <input type="text" name="name" placeholder="例: 山田 太郎" class="register-form__title-input">
                         </div>
                         <div class="form__alert">
-                            @if($errors->has('name'))
-                            <div class="form__alert--danger">
-                                <ul>
-                                    @foreach($errors->get('name') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            @endif
+                            <p class="form__alert--danger">
+                                @error('name')
+                                {{ $message }}
+                                @enderror
+                            </p>
                         </div>
 
                         <div class="register-form__title">
@@ -63,15 +59,11 @@
                             <input type="text" name="email" placeholder="例: test@example.com" class="register-form__title-input">
                         </div>
                         <div class="form__alert">
-                            @if($errors->has('email'))
-                            <div class="form__alert--danger">
-                                <ul>
-                                    @foreach($errors->get('email') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            @endif
+                            <p class="form__alert--danger">
+                                @error('email')
+                                {{ $message }}
+                                @enderror
+                            </p>
                         </div>
 
                         <div class="register-form__title">
@@ -79,15 +71,11 @@
                             <input type="password" name="password" placeholder="例: coachtech1106" class="register-form__title-input">
                         </div>
                         <div class="form__alert">
-                            @if($errors->has('password'))
-                            <div class="form__alert--danger">
-                                <ul>
-                                    @foreach($errors->get('password') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            @endif
+                            <p class="form__alert--danger">
+                                @error('password')
+                                {{ $message }}
+                                @enderror
+                            </p>
                         </div>
 
                         <div class="register-form__button">

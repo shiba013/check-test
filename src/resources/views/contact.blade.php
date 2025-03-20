@@ -45,11 +45,11 @@
                 </div>
                 <div class="form__item-content">
                     <div class="content__text">
-                        <input type="radio" name="gender" value="1" class="radio" checked>
+                        <input type="radio" name="gender" value="1" {{ old('gender') == 1 || old('gender') == null ? 'checked' : '' }} class="radio">
                         <label for="radio">男性&nbsp; &nbsp;</label>
-                        <input type="radio" name="gender" value="2" class="radio">
+                        <input type="radio" name="gender" value="2" {{ old('gender') == 2 || old('gender') == 2 ? 'checked' : '' }} class="radio">
                         <label for="radio">女性&nbsp; &nbsp;</label>
-                        <input type="radio" name="gender" value="3" class="radio">
+                        <input type="radio" name="gender" value="3" {{ old('gender') == 3 || old('gender') == 3 ? 'checked' : '' }} class="radio">
                         <label for="radio">その他</label>
                     </div>
                     <div class="form__alert">
@@ -153,7 +153,7 @@
                         <select name="category_id" class="content__text-input">
                             <option value="">選択してください</option>
                             @foreach($categories as $category)
-                            <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+                            <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->content }}</option>
                             @endforeach
                         </select>
                     </div>

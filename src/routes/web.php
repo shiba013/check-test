@@ -18,15 +18,19 @@ use App\Http\Controllers\CategoryController;
 Route::middleware('auth')->group(function ()
 {
     Route::get('/admin', [UserController::class, 'index']);
+    Route::get('/search', [UserController::class, 'search']);
+    Route::delete('/delete', [UserController::class, 'destroy']);
+    Route::post('/export', [UserController::class, 'export']);
 });
-Route::get('/admin/search', [UserController::class, 'search']);
-Route::delete('/admin/delete', [UserController::class, 'destroy']);
 
 Route::get('/', [ContactController::class, 'index']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
 
-Route::get('/categories', [CategoryController::class, 'index']);
-Route::post('/categories/add', [CategoryController::class, 'add']);
-Route::patch('/categories/update', [CategoryController::class, 'update']);
-Route::delete('/categories/delete', [CategoryController::class, 'destroy']);
+Route::prefix('categories')->group(function ()
+{
+    Route::get('', [CategoryController::class, 'index']);
+    Route::post('add', [CategoryController::class, 'add']);
+    Route::patch('update', [CategoryController::class, 'update']);
+    Route::delete('delete', [CategoryController::class, 'destroy']);
+});

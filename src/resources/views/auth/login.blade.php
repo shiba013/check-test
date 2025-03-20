@@ -44,18 +44,14 @@
                         @csrf
                         <div class="login-form__title">
                             <span class="login-form__title-span">メールアドレス</span>
-                            <input type="text" name="email" placeholder="例: test@example.com" class="login-form__title-input">
+                            <input type="mail" name="email" id="email" placeholder="例: test@example.com" class="login-form__title-input">
                         </div>
                         <div class="form__alert">
-                            @if($errors->has('email'))
-                            <div class="form__alert--danger">
-                                <ul>
-                                    @foreach($errors->get('email') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            @endif
+                            <p class="form__alert--danger">
+                                @error('email')
+                                {{ $message }}
+                                @enderror
+                            </p>
                         </div>
 
                         <div class="login-form__title">
@@ -63,15 +59,11 @@
                             <input type="password" name="password" placeholder="例: coachtech1106" class="login-form__title-input">
                         </div>
                         <div class="form__alert">
-                            @if($errors->has('password'))
-                            <div class="form__alert--danger">
-                                <ul>
-                                    @foreach($errors->get('password') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            @endif
+                            <p class="form__alert--danger">
+                                @error('password')
+                                {{ $message }}
+                                @enderror
+                            </p>
                         </div>
 
                         <div class="login-form__button">

@@ -13,33 +13,36 @@
     </div>
 
 <div class="form">
-    <form action="/admin/search" method="get" class="search-form">
+    <form action="/search" method="get" class="search-form">
         @csrf
         <div class="search-form__item">
             <input type="text" name="keyword" value="{{ old('keyword') }}" class="search-form__item-group--key" placeholder="名前やメールアドレスを入力してください">
             <select name="gender" class="search-form__item-group">
                 <option value="" selected>性別</option>
-                <option value="1">男性</option>
-                <option value="2">女性</option>
-                <option value="3">その他</option>
+                <option value="1" {{ old('gender') == 1 || old('gender') == 1 ? 'selected' : '' }}>男性</option>
+                <option value="2" {{ old('gender') == 2 || old('gender') == 2 ? 'selected' : '' }}>女性</option>
+                <option value="3" {{ old('gender') == 3 || old('gender') == 3 ? 'selected' : '' }}>その他</option>
             </select>
             <select name="category_id" class="search-form__item-group">
                 <option value="" selected hidden>選択してください</option>
                 @foreach($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->content }}</option>
+                <option value="{{ $category->id }}" {{ old('category_id') == $category->id }}>{{ $category->content }}</option>
                 @endforeach
             </select>
-            <input type="date" name="created_at" class="search-form__item-group--data">
+            <input type="date" name="created_at" class="search-form__item-group--data" value="{{ request('created_at') }}">
         </div>
         <div class="search-form__button">
-            <button type="submit" class="search-form__button-submit">検索</button>
-            <button type="reset" class="search-form__button-reset">リセット</button>
+            <input type="submit" class="search-form__button-submit" value="検索">
+            <input type="submit" class="search-form__button-reset" value="リセット" name="reset">
         </div>
     </form>
 
     <div class="function">
-        <button type="submit" class="function-button">エクスポート</button>
-        {{ $contacts->links('vendor.Pagination.bootstrap-4') }}
+        <form action="/export?" method="post" class="function-form">
+            @csrf
+            <input type="submit" value="エクスポート" class="function-button">
+        </form>
+        {{ $contacts->links('vendor.pagination.bootstrap-4') }}
     </div>
 
     <div class="table">
@@ -74,7 +77,7 @@
                 <a href="#!" class="popover"></a>
                 <div class="modal__inner">
                     <div class="modal__content">
-                        <form action="/admin/delete" method="post" class="delete-form">
+                        <form action="/delete" method="post" class="delete-form">
                             @method('delete')
                             @csrf
                             <div class="delete-form__item">

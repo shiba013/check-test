@@ -52,11 +52,11 @@ class Contact extends Model
         }
     }
 
-    public function scopeDataSearch($query, $created_at)
+    public function scopeDateSearch($query, $created_at)
     {
         if(!empty($created_at))
         {
-            $query->where('created_at', $created_at);
+            $query->whereDate('created_at', $created_at);
         }
     }
 }
